@@ -1,0 +1,112 @@
+{% extends "index.html" %}
+
+{% block content %}
+<title>Cr's PDF EDITOR</title>
+<style>
+  .loading {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1000;
+  }
+</style>
+
+<body>
+  <div class="container">
+    <h1 class="heading-professional px-4">PDF EDITOR</h1>
+
+    <form action="/edit" method="post" enctype="multipart/form-data" onsubmit="showLoading()">
+      <div class="mb-3">
+        <label for="formfile" class="form-label">Choose file to upload</label>
+        <input class="form-control" type="file" id="fileUpload" name="fileUpload" required>
+      </div>
+
+      <div class="form-floating">
+        <select name="operation" class="form-select" id="floatingSelect" aria-label="Floating label select example" required>
+          <option value="" disabled selected>Choose Operation</option>
+          <option value="1">PDF to DOCX</option>
+          <option value="2">DOCX to PDF</option>
+        </select>
+        <label for="floatingSelect">Works with selects</label>
+      </div>
+      <button type="submit" class="btn btn-success my-2">Upload</button>
+    </form>
+
+    <div class="loading" id="loading">Processing, please wait...</div>
+
+    <script>
+      function showLoading() {
+        document.getElementById('loading').style.display = 'block';
+      }
+    </script>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class="list-group mt-3">
+          {% for category, message in messages %}
+            <li class="list-group-item list-group-item-{{ category }}">{{ message|safe }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+  </div>
+
+  <div class="container mt-5">
+    <h2>Reminder Steps!</h2>
+    <p class="description">How to Edit PDF</p>
+    <div class="instructions">
+      <p>1. Choose PDF file you want to edit.</p>
+      <p>2. Choose Operation - PDF To Docx.</p>
+      <p>3. After Uploading it will be converted into (Editable)-Docx File.</p>
+      <p>4. Docx file will be Downloaded.</p>
+      <p>5. Edit the Docx File from the Microsoft-Word.</p>
+      <p>6. Now upload the Docx File.</p>
+      <p>7. Choose Operation - Docx to PDF.</p>
+      <p>8. Your Edited PDF is Ready!</p>
+    </div>
+  </div>
+</body>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #333;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 10px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .description {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #333;
+  }
+
+  .instructions {
+    font-size: 1em;
+    line-height: 1.4;
+    color: #000;
+    margin-top: 20px;
+  }
+</style>
+</html>
+{% endblock %}

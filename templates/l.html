@@ -1,0 +1,71 @@
+{% extends "index.html" %}
+
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #333;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    .header {
+        background-color: #00fff7;
+        color: #fff;
+        padding: 20px;
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+    .container {
+
+        max-width: 800px;
+        margin: 10px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border: 1px solid #000000;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .description {
+        font-size: 1.2em;
+        line-height: 1.6;
+        color: #333;
+    }
+
+    .instructions {
+        font-size: 1em;
+        line-height: 1.4;
+        color: #000;
+        margin-top: 20px;
+    }
+</style>
+<body>
+    <div class="header">
+        <form action="/edit" method="POST">
+            <button type="submit" class="btn btn-danger btn-lg">EDIT NOW !</button>
+        </form>
+    </div>
+    <div class="container">
+        <h2>Welcome to CR's PDF Editor</h2>
+        <p class="description">Edit your PDF Step by Step!</p>
+        <div class="instructions">
+            <p>Here’s how to edit your PDF:</p>
+            <p>1. Open the PDF file you want to edit.</p>
+            <p>2. Upload it !.</p>
+            <p>3. After Uploading it will be converted into (Editable)-Docx File.</p>
+            <p>4. Docx file will be Downloaded.</p>
+            <p>5. Edit the Docx File from the Word</p>
+            <p>6. Now upload the Docx File and it will be again Coverted into the Edited PDF File</p>
+            <p>7. Your Edited PDF is Ready !</p>
+        </div>
+    </div>
+</body>
+
+</div>
+
+</html>
+
+{% endblock %}
